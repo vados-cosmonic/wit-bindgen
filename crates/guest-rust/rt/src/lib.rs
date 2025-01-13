@@ -116,3 +116,8 @@ pub fn run_ctors_once() {
 /// Support for using the Component Model Async ABI
 #[cfg(feature = "async")]
 pub mod async_support;
+
+/// Support for using the Component Model Error Contexts ABI
+///
+/// Errors Contexts were introduced with Async but do not depend on use of async.
+pub mod error_support;
