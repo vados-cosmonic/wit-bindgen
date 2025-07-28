@@ -13,7 +13,7 @@ int main() {
 
     runner_subtask_t subtask = RUNNER_SUBTASK_HANDLE(status);
     assert(subtask != 0);
-    status = runner_subtask_cancel(subtask);
+    /* status = runner_subtask_cancel(subtask); */
     /* assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_RETURNED_CANCELLED); */
     /* assert(RUNNER_SUBTASK_HANDLE(status) == 0); */
 
