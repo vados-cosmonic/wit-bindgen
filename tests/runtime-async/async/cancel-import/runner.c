@@ -20,12 +20,12 @@ int main() {
     //
     // This is returning <???> *instead* of SUBTASK_RETURNED_CANCELLED
     //assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_RETURNED_CANCELLED);
-    assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_STARTED); // <---- maybe it returned?
+    assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_STARTING); // <---- maybe it returned?
 
     // Possible states:
 /* typedef enum runner_subtask_state { */
-/*   RUNNER_SUBTASK_STARTING, */
-/*   RUNNER_SUBTASK_STARTED, */
+/*   RUNNER_SUBTASK_STARTING,  */
+/*   RUNNER_SUBTASK_STARTED, (nope) */
 /*   RUNNER_SUBTASK_RETURNED, (nope) */
 /*   RUNNER_SUBTASK_STARTED_CANCELLED, (nope) */
 /*   RUNNER_SUBTASK_RETURNED_CANCELLED, (nope) */
