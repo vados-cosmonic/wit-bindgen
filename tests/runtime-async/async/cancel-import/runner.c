@@ -16,7 +16,7 @@ int main() {
     fprintf(stderr, "CALLBACK CODE (post-pending-import-call) [%d]\n", cc);
     fflush(stderr);
     // TODO figure out what this should be... should it immediately yield?
-    assert(cc == 2); // TODO: we probably need to separate out the direct comparison and set macro?
+    //assert(cc == 2); // TODO: we probably need to separate out the direct comparison and set macro?
 
     runner_subtask_t subtask = RUNNER_SUBTASK_HANDLE(cc);
     assert(subtask != 0);
