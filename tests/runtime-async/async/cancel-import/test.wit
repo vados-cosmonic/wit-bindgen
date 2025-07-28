@@ -6,7 +6,6 @@ interface i {
 }
 
 world test {
-  include wasi:cli/imports@0.2.6;
   export i;
 }
 
