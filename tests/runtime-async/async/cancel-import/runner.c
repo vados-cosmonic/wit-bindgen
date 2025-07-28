@@ -19,8 +19,8 @@ int main() {
     // Buggy line is below
     //
     // This is returning <???> *instead* of SUBTASK_RETURNED_CANCELLED
-    //assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_RETURNED_CANCELLED);
-    assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_STARTING); // <---- maybe it returned?
+    assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_RETURNED_CANCELLED);
+    /* assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_STARTING); // <---- maybe it returned? */
 
     // Possible states:
 /* typedef enum runner_subtask_state { */

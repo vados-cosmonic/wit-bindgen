@@ -700,7 +700,7 @@ impl C {
             "
 typedef uint32_t {snake}_subtask_status_t;
 typedef uint32_t {snake}_subtask_t;
-#define {shouty}_SUBTASK_STATE(status) (({snake}_subtask_state_t) ((status) & 0xf))
+#define {shouty}_SUBTASK_STATE(status) (({snake}_subtask_state_t) (status))
 #define {shouty}_SUBTASK_HANDLE(status) (({snake}_subtask_t) ((status) >> 4))
 
 typedef enum {snake}_subtask_state {{
