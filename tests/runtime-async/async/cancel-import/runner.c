@@ -12,16 +12,16 @@ int main() {
     test_future_void_writer_t writer;
     test_future_void_t reader = test_future_void_new(&writer);
 
-    runner_subtask_status_t status = test_async_pending_import(reader);
-    fprintf(stderr, "SUBTASK STATUS (post-pending-import-call) [%d]\n", status);
-    fprintf(stderr, "SUBTASK STATE (post-pending-import-call, macro) [%d]\n", RUNNER_SUBTASK_STATE(status));
+    test_callback_code_t cc = test_async_pending_import(reader);
+    fprintf(stderr, "CALLBACK CODE (post-pending-import-call) [%d]\n", cc);
     fflush(stderr);
-    assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_STARTED);
+    // TODO figure out what this should be... should it immediately yield?
+    assert(cc == RUNNER_CALLBACK_CODE_WAIT);
 
     runner_subtask_t subtask = RUNNER_SUBTASK_HANDLE(status);
     assert(subtask != 0);
 
-    status = runner_subtask_cancel(subtask);
+    runner_subtask_status_t status = runner_subtask_cancel(subtask);
     // Buggy line is below
     //
     // This is returning <???> *instead* of SUBTASK_RETURNED_CANCELLED
