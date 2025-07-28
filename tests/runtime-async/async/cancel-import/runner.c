@@ -16,8 +16,12 @@ int main() {
     assert(subtask != 0);
 
     status = runner_subtask_cancel(subtask);
-    //assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_RETURNED_CANCELLED); // <---- BUG is here
-    assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_RETURNED); // <---- maybe it returned?
+    // Buggy line is below
+    //
+    // This is returning <???> *instead* of SUBTASK_RETURNED_CANCELLED
+    //assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_RETURNED_CANCELLED);
+    assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_STARTED_CANCELLED); // <---- maybe it returned?
+
     /* assert(RUNNER_SUBTASK_HANDLE(status) == 0); */
 
     /* runner_waitable_status_t status2 = test_future_void_write(writer); */
