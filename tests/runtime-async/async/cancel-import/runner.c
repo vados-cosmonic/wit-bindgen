@@ -12,13 +12,13 @@ int main() {
     test_future_void_writer_t writer;
     test_future_void_t reader = test_future_void_new(&writer);
 
-    test_callback_code_t cc = test_async_pending_import(reader);
+    runner_callback_code_t cc = test_async_pending_import(reader);
     fprintf(stderr, "CALLBACK CODE (post-pending-import-call) [%d]\n", cc);
     fflush(stderr);
     // TODO figure out what this should be... should it immediately yield?
-    assert(cc == RUNNER_CALLBACK_CODE_WAIT(0));
+    assert(cc == 2); // TODO: we probably need to separate out the direct comparison and set macro?
 
-    runner_subtask_t subtask = RUNNER_SUBTASK_HANDLE(status);
+    runner_subtask_t subtask = RUNNER_SUBTASK_HANDLE(cc);
     assert(subtask != 0);
 
     runner_subtask_status_t status = runner_subtask_cancel(subtask);
