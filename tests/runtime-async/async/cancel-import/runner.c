@@ -21,8 +21,8 @@ int main() {
     // Buggy line is below
     //
     // This is returning <???> *instead* of SUBTASK_RETURNED_CANCELLED
-    printf("SUBTASK STATE (pre-macro) [%d]\n", status);
-    printf("SUBTASK STATE (poste-macro) [%d]\n", RUNNER_SUBTASK_STATE(status));
+    fprintf(stderr, "SUBTASK STATE (pre-macro) [%d]\n", status);
+    fprintf(stderr, "SUBTASK STATE (poste-macro) [%d]\n", RUNNER_SUBTASK_STATE(status));
     assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_RETURNED_CANCELLED);
     /* assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_STARTING); // <---- maybe it returned? */
 
