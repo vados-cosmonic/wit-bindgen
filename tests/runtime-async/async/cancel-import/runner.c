@@ -26,6 +26,7 @@ int main() {
     fprintf(stderr, "SUBTASK STATE (poste-macro) [%d]\n", RUNNER_SUBTASK_STATE(status));
     fflush(stderr);
     abort();
+    assert(2 == 1);
     assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_RETURNED_CANCELLED);
     /* assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_STARTING); // <---- maybe it returned? */
 
