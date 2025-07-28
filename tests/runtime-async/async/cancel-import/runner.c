@@ -24,7 +24,7 @@ int main() {
 
     // Possible states:
 /* typedef enum runner_subtask_state { */
-/*   RUNNER_SUBTASK_STARTING,  */
+/*   RUNNER_SUBTASK_STARTING, (nope)  */
 /*   RUNNER_SUBTASK_STARTED, (nope) */
 /*   RUNNER_SUBTASK_RETURNED, (nope) */
 /*   RUNNER_SUBTASK_STARTED_CANCELLED, (nope) */
