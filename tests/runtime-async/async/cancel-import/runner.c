@@ -19,7 +19,7 @@ int main() {
     runner_waitable_status_t status2 = test_future_void_write(writer);
     assert(RUNNER_WAITABLE_STATE(status2) == RUNNER_WAITABLE_DROPPED);
     assert(RUNNER_WAITABLE_COUNT(status2) == 0);
-    test_future_void_drop_writable(writer);
+    /* test_future_void_drop_writable(writer); */
   }
 
   /* // One import in "started", one in "starting", then cancel both. */
