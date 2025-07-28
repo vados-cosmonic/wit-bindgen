@@ -17,6 +17,7 @@ int main() {
     fflush(stderr);
     // TODO figure out what this should be... should it immediately yield?
     //assert(cc == 2); // TODO: we probably need to separate out the direct comparison and set macro?
+    // TODO: *undo* the bit shift
 
     runner_subtask_t subtask = RUNNER_SUBTASK_HANDLE(cc);
     assert(subtask != 0);
@@ -29,23 +30,17 @@ int main() {
     fprintf(stderr, "SUBTASK STATE (poste-macro) [%d]\n", RUNNER_SUBTASK_STATE(status));
     fflush(stderr);
     assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_RETURNED_CANCELLED);
-    /* assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_STARTING); // <---- maybe it returned? */
+    fprintf(stderr, "subtask state is correct");
 
-    // Possible states:
-/* typedef enum runner_subtask_state { */
-/*   RUNNER_SUBTASK_STARTING, (nope)  */
-/*   RUNNER_SUBTASK_STARTED, (nope) */
-/*   RUNNER_SUBTASK_RETURNED, (nope) */
-/*   RUNNER_SUBTASK_STARTED_CANCELLED, (nope) */
-/*   RUNNER_SUBTASK_RETURNED_CANCELLED, (nope) */
-/* } runner_subtask_state_t; */
+    assert(RUNNER_SUBTASK_HANDLE(status) == 0);
+    fprintf(stderr, "subtask handle status is correct");
 
-    /* assert(RUNNER_SUBTASK_HANDLE(status) == 0); */
-
-    /* runner_waitable_status_t status2 = test_future_void_write(writer); */
-    /* assert(RUNNER_WAITABLE_STATE(status2) == RUNNER_WAITABLE_DROPPED); */
-    /* assert(RUNNER_WAITABLE_COUNT(status2) == 0); */
-    /* test_future_void_drop_writable(writer); */
+    runner_waitable_status_t status2 = test_future_void_write(writer);
+    fprintf(stderr, "void write worked");
+    assert(RUNNER_WAITABLE_STATE(status2) == RUNNER_WAITABLE_DROPPED);
+    assert(RUNNER_WAITABLE_COUNT(status2) == 0);
+    test_future_void_drop_writable(writer);
+    fprintf(stderr, "everything worked");
   }
 
   /* // One import in "started", one in "starting", then cancel both. */
