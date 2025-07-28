@@ -13,6 +13,9 @@ int main() {
     test_future_void_t reader = test_future_void_new(&writer);
 
     runner_subtask_status_t status = test_async_pending_import(reader);
+    fprintf(stderr, "SUBTASK STATUS (post-pending-import-call) [%d]\n", status);
+    fprintf(stderr, "SUBTASK STATE (post-pending-import-call, macro) [%d]\n", RUNNER_SUBTASK_STATE(status));
+    fflush(stderr);
     assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_STARTED);
 
     runner_subtask_t subtask = RUNNER_SUBTASK_HANDLE(status);
@@ -25,8 +28,6 @@ int main() {
     fprintf(stderr, "SUBTASK STATE (pre-macro) [%d]\n", status);
     fprintf(stderr, "SUBTASK STATE (poste-macro) [%d]\n", RUNNER_SUBTASK_STATE(status));
     fflush(stderr);
-    abort();
-    assert(2 == 1);
     assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_RETURNED_CANCELLED);
     /* assert(RUNNER_SUBTASK_STATE(status) == RUNNER_SUBTASK_STARTING); // <---- maybe it returned? */
 
