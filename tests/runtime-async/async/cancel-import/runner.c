@@ -16,7 +16,7 @@ int main() {
     fprintf(stderr, "CALLBACK CODE (post-pending-import-call) [%d]\n", cc);
     fflush(stderr);
     // TODO figure out what this should be... should it immediately yield?
-    assert(cc == RUNNER_CALLBACK_CODE_WAIT);
+    assert(cc == RUNNER_CALLBACK_CODE_WAIT(0));
 
     runner_subtask_t subtask = RUNNER_SUBTASK_HANDLE(status);
     assert(subtask != 0);
