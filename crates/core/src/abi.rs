@@ -1093,10 +1093,17 @@ impl<'a, B: Bindgen> Generator<'a, B> {
                 }
 
                 // Emit the function return
-                self.emit(&Instruction::Return {
-                    func,
-                    amt: usize::from(func.result.is_some()),
-                });
+                if async_ {
+                    self.emit(&Instruction::AsyncTaskReturn {
+                        name: &format!("[task-return]{}", func.name),
+                        params: &[WasmType::Pointer],
+                    });
+                } else {
+                    self.emit(&Instruction::Return {
+                        func,
+                        amt: usize::from(func.result.is_some()),
+                    });
+                }
             }
 
             LiftLower::LiftArgsLowerResults => {
